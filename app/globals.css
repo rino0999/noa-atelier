@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Tailwind v4 theme — custom brand colors & fonts ── */
+@theme {
+  /* Colors */
+  --color-softCream: #faf7f2;
+  --color-ivory: #f5f0e8;
+  --color-warmGold: #c9a96e;
+  --color-dustyRose: #d4a5a5;
+  --color-charcoal: #2c2c2c;
+  --color-deepEspresso: #1a1008;
+  --color-antiqueBrass: #8b6914;
+
+  /* Font families — system fallbacks (swap for next/font/google on Vercel)
+     Palatino ≈ Cormorant Garamond (elegant editorial serif)
+     system-ui ≈ DM Sans (clean geometric sans) */
+  --font-family-cormorant: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --font-family-dm: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Animations */
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-fadeIn: fadeIn 0.4s ease forwards;
+  --animate-slideInRight: slideInRight 0.3s ease forwards;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Keyframes ── */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes slideInRight {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+/* ── Base styles ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #faf7f2;
+}
+::-webkit-scrollbar-thumb {
+  background: #c9a96e;
+  border-radius: 3px;
+}
+
+:focus-visible {
+  outline: 2px solid #c9a96e;
+  outline-offset: 2px;
 }
