@@ -17,6 +17,8 @@ import {
   updateCartLine,
 } from "@/lib/shopify";
 
+const CART_ID_KEY = "noa_cart_id";
+
 interface CartContextValue {
   cart: Cart | null;
   cartOpen: boolean;
@@ -35,13 +37,17 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("noa_cart");
-    if (stored) {
-      try {
-        setCart(JSON.parse(stored));
-      } catch {}
-    }
+    const cartId = localStorage.getItem(CART_ID_KEY);
+    if (!cartId) return;
+    getCart(cartId)
+      .then(setCart)
+      .catch(() => localStorage.removeItem(CART_ID_KEY));
   }, []);
+
+  function persistCart(c: Cart) {
+    localStorage.setItem(CART_ID_KEY, c.id);
+    setCart(c);
+  }
 
   const itemCount = cart?.lines.reduce((sum, l) => sum + l.quantity, 0) ?? 0;
 
@@ -50,13 +56,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = useCallback(
     async (variantId: string, quantity = 1) => {
-      let updated: Cart;
-      if (!cart) {
-        updated = await createCart(variantId, quantity);
-      } else {
-        updated = await addToCart(cart.id, variantId, quantity);
-      }
-      setCart(updated);
+      const updated = cart
+        ? await addToCart(cart.id, variantId, quantity)
+        : await createCart(variantId, quantity);
+      persistCart(updated);
       setCartOpen(true);
     },
     [cart]
@@ -66,7 +69,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     async (lineId: string, quantity: number) => {
       if (!cart) return;
       const updated = await updateCartLine(cart.id, lineId, quantity);
-      setCart(updated);
+      persistCart(updated);
     },
     [cart]
   );
@@ -75,7 +78,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     async (lineId: string) => {
       if (!cart) return;
       const updated = await removeCartLine(cart.id, lineId);
-      setCart(updated);
+      persistCart(updated);
     },
     [cart]
   );

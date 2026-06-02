@@ -124,7 +124,7 @@ export default function CartSidebar() {
               Shipping and taxes calculated at checkout.
             </p>
             <a
-              href="#"
+              href={cart?.checkoutUrl ?? "#"}
               className="block w-full text-center bg-warmGold text-charcoal font-medium rounded-full py-3 hover:bg-[#b8943e] transition-colors"
               aria-label="Proceed to checkout"
             >

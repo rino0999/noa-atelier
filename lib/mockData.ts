@@ -6,6 +6,7 @@ export interface ProductVariant {
 }
 
 export interface ProductImage {
+  url?: string;
   bg: string;
   bead1: string;
   bead2: string;
@@ -41,6 +42,7 @@ export interface CartLine {
 
 export interface Cart {
   id: string;
+  checkoutUrl: string;
   lines: CartLine[];
   totalPrice: number;
 }

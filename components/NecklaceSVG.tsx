@@ -1,4 +1,5 @@
 interface NecklaceColours {
+  url?: string;
   bg: string;
   bead1: string;
   bead2: string;
@@ -46,6 +47,21 @@ export default function NecklaceSVG({
   className = "",
 }: NecklaceSVGProps) {
   const { width, height } = SIZES[size];
+
+  if (colours.url) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={colours.url}
+        alt=""
+        width={width}
+        height={height}
+        className={`object-cover rounded-xl ${className}`}
+        style={{ width, height }}
+      />
+    );
+  }
+
   const beads = computeBeads(colours);
   const claspY = CY - RY - 6;
   const filterId = `shadow-${colours.bead1.replace("#", "")}`;
