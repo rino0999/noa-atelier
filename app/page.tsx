@@ -30,26 +30,6 @@ const socialColours = [
   { bg: "#F5ECEC", bead1: "#DFC28E", bead2: "#E8C8C8", bead3: "#C9A96E" },
 ];
 
-const categoryCards = [
-  {
-    title: "New Arrivals",
-    subtitle: "Fresh from the studio",
-    href: "/collections/new-arrivals",
-    colours: { bg: "#FAF7F2", bead1: "#D4A5A5", bead2: "#E8C8C8", bead3: "#C9A96E" },
-  },
-  {
-    title: "Gift Sets",
-    subtitle: "Curated for someone special",
-    href: "/collections/gift-sets",
-    colours: { bg: "#F5EDD5", bead1: "#C9A96E", bead2: "#DFC28E", bead3: "#D4A5A5" },
-  },
-  {
-    title: "Shop by Occasion",
-    subtitle: "The perfect piece for every moment",
-    href: "/occasions",
-    colours: { bg: "#F5ECEC", bead1: "#E8C8C8", bead2: "#D4A5A5", bead3: "#C9A96E" },
-  },
-];
 
 export default async function HomePage() {
   const featured = await getFeaturedProducts();
@@ -102,24 +82,30 @@ export default async function HomePage() {
         <h2 className="font-cormorant font-light text-3xl text-charcoal mb-10">
           Explore the Collection
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {categoryCards.map((cat) => (
-            <Link
-              key={cat.href}
-              href={cat.href}
-              className="group relative bg-ivory rounded-2xl overflow-hidden p-8 hover:bg-dustyRose/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="flex justify-center mb-6">
-                <NecklaceSVG size="sm" colours={cat.colours} />
-              </div>
-              <h3 className="font-cormorant text-2xl text-charcoal">{cat.title}</h3>
-              <p className="font-dm text-sm text-charcoal/50 mt-1">{cat.subtitle}</p>
-              <span className="inline-block mt-4 text-warmGold text-sm group-hover:translate-x-1 transition-transform">
-                Shop now →
-              </span>
-            </Link>
-          ))}
-        </div>
+        <Link
+          href="/collections/new-arrivals"
+          className="group relative block w-full overflow-hidden rounded-2xl h-[480px]"
+        >
+          <Image
+            src="/new-arrivals.jpg"
+            alt="New Arrivals — fresh handcrafted necklaces from the Noa Atelier studio"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+          <div className="absolute bottom-0 left-0 p-8 sm:p-12">
+            <h3 className="font-cormorant font-light text-4xl sm:text-5xl text-white mb-2">
+              New Arrivals
+            </h3>
+            <p className="font-dm text-white/80 text-sm sm:text-base mb-4">
+              Fresh from the studio
+            </p>
+            <span className="inline-block font-dm text-sm text-white border-b border-white/60 pb-0.5 group-hover:border-white transition-colors">
+              Shop now →
+            </span>
+          </div>
+        </Link>
       </section>
 
       {/* ── Featured Products ────────────────────────── */}
