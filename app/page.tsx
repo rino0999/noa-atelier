@@ -84,24 +84,34 @@ export default async function HomePage() {
         </h2>
         <Link
           href="/collections/new-arrivals"
-          className="group relative block w-full overflow-hidden rounded-2xl h-[480px]"
+          className="group flex flex-col lg:flex-row w-full rounded-2xl overflow-hidden bg-ivory min-h-[480px]"
         >
-          <Image
-            src="/new-arrivals.jpg"
-            alt="New Arrivals — fresh handcrafted necklaces from the Noa Atelier studio"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-8 sm:p-12">
-            <h3 className="font-cormorant font-light text-4xl sm:text-5xl text-white mb-2">
+          {/* Left — images */}
+          <div className="flex-1 flex items-center justify-center gap-4 p-10 py-14 bg-softCream">
+            <Image
+              src="/about-1.png"
+              alt="Handcrafted necklace from the new arrivals collection"
+              width={192}
+              height={280}
+              className="rounded-2xl object-cover w-44 h-64 sm:w-48 sm:h-72"
+            />
+            <Image
+              src="/about-2.png"
+              alt="Close-up of beaded necklace from the new arrivals collection"
+              width={192}
+              height={280}
+              className="rounded-2xl object-cover w-44 h-64 sm:w-48 sm:h-72 mt-12"
+            />
+          </div>
+          {/* Right — text */}
+          <div className="flex-1 flex flex-col justify-center px-10 py-14 lg:px-16">
+            <h3 className="font-cormorant font-light text-4xl sm:text-5xl text-charcoal mb-3">
               New Arrivals
             </h3>
-            <p className="font-dm text-white/80 text-sm sm:text-base mb-4">
+            <p className="font-dm text-charcoal/60 text-base mb-6">
               Fresh from the studio
             </p>
-            <span className="inline-block font-dm text-sm text-white border-b border-white/60 pb-0.5 group-hover:border-white transition-colors">
+            <span className="inline-block font-dm text-sm text-warmGold group-hover:translate-x-1 transition-transform">
               Shop now →
             </span>
           </div>
