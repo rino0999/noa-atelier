@@ -48,7 +48,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         />
       </button>
 
-      <Link href={`/products/${product.handle}`} className="block">
+      <Link href={`/product/${product.handle}`} className="block">
         {/* SVG illustration */}
         <div className="flex justify-center items-center py-8 px-4 bg-ivory/60">
           <NecklaceSVG size="md" colours={product.images[0]} />
