@@ -1,5 +1,4 @@
 import Link from "next/link";
-import NecklaceSVG from "@/components/NecklaceSVG";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -48,14 +47,17 @@ export default function AboutPage() {
           </p>
         </div>
         <div className="flex gap-4 justify-center">
-          <NecklaceSVG
-            size="md"
-            colours={{ bg: "#FAF7F2", bead1: "#D4A5A5", bead2: "#C9A96E", bead3: "#E8C8C8" }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/about-1.jpg"
+            alt="Handcrafted necklaces laid out on a wooden studio table"
+            className="rounded-2xl object-cover w-48 h-56"
           />
-          <NecklaceSVG
-            size="md"
-            colours={{ bg: "#F5EDD5", bead1: "#C9A96E", bead2: "#DFC28E", bead3: "#D4A5A5" }}
-            className="mt-10"
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/about-2.jpg"
+            alt="Close-up of beads being strung by hand in the Noa Atelier studio"
+            className="rounded-2xl object-cover w-48 h-56 mt-10"
           />
         </div>
       </section>
