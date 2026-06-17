@@ -49,13 +49,13 @@ export default function AboutPage() {
         <div className="flex gap-4 justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/about-1.jpg"
+            src="/about-1.png"
             alt="Handcrafted necklaces laid out on a wooden studio table"
             className="rounded-2xl object-cover w-48 h-56"
           />
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/about-2.jpg"
+            src="/about-2.png"
             alt="Close-up of beads being strung by hand in the Noa Atelier studio"
             className="rounded-2xl object-cover w-48 h-56 mt-10"
           />
