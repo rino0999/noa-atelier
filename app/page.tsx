@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import NecklaceSVG from "@/components/NecklaceSVG";
 import ProductCard from "@/components/ProductCard";
 import { getFeaturedProducts } from "@/lib/shopify";
@@ -82,11 +83,16 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <NecklaceSVG
-              size="lg"
-              colours={{ bg: "#F5F0E8", bead1: "#D4A5A5", bead2: "#C9A96E", bead3: "#E8C8C8" }}
-              className="drop-shadow-2xl"
-            />
+            <div className="relative w-full max-w-sm lg:max-w-md xl:max-w-lg aspect-square rounded-2xl overflow-hidden drop-shadow-2xl">
+              <Image
+                src="/hero.jpg"
+                alt="Handcrafted beaded necklace by Noa Atelier"
+                fill
+                sizes="(max-width: 1024px) 80vw, 40vw"
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
