@@ -79,7 +79,7 @@ export default function ProductPageClient({ product, relatedProducts }: Props) {
   const [selectedLength, setSelectedLength] = useState(product.variants[0]?.length ?? "");
   const [selectedColour, setSelectedColour] = useState(product.variants[0]?.colour ?? "");
   const [qty, setQty] = useState(1);
-  const [activeImage, setActiveImage] = useState(0);
+  const [activeMedia, setActiveMedia] = useState(0);
   const [wishlisted, setWishlisted] = useState(false);
   const [added, setAdded] = useState(false);
 
@@ -114,22 +114,72 @@ export default function ProductPageClient({ product, relatedProducts }: Props) {
 
       {/* Main product section */}
       <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {/* Left — Images */}
+        {/* Left — Media */}
         <div className="space-y-4">
           <div className="rounded-2xl overflow-hidden bg-ivory flex items-center justify-center p-8">
-            <NecklaceSVG size="lg" colours={product.images[activeImage]} />
+            {product.media[activeMedia]?.type === "video" ? (
+              <video
+                controls
+                playsInline
+                muted
+                autoPlay
+                loop
+                poster={product.media[activeMedia].url}
+                className="max-w-[320px] max-h-[352px] w-full rounded-xl"
+              >
+                {product.media[activeMedia].sources?.map((s, i) => (
+                  <source key={i} src={s.url} type={s.mimeType} />
+                ))}
+              </video>
+            ) : (
+              <NecklaceSVG
+                size="lg"
+                colours={{
+                  url: product.media[activeMedia]?.url,
+                  bg: product.media[activeMedia]?.bg ?? "",
+                  bead1: product.media[activeMedia]?.bead1 ?? "",
+                  bead2: product.media[activeMedia]?.bead2 ?? "",
+                  bead3: product.media[activeMedia]?.bead3 ?? "",
+                }}
+              />
+            )}
           </div>
           <div className="flex gap-3">
-            {product.images.map((img, i) => (
+            {product.media.map((item, i) => (
               <button
                 key={i}
-                onClick={() => setActiveImage(i)}
-                aria-label={`View image ${i + 1}`}
+                onClick={() => setActiveMedia(i)}
+                aria-label={`View ${item.type === "video" ? "video" : "image"} ${i + 1}`}
                 className={`rounded-xl overflow-hidden border-2 transition-colors ${
-                  activeImage === i ? "border-warmGold" : "border-transparent"
+                  activeMedia === i ? "border-warmGold" : "border-transparent"
                 }`}
               >
-                <NecklaceSVG size="sm" colours={img} />
+                {item.type === "video" ? (
+                  <div className="relative w-[120px] h-[132px]">
+                    {item.url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={item.url} alt="" className="w-full h-full object-cover" />
+                    ) : (
+                      <div className="w-full h-full bg-ivory" />
+                    )}
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="bg-black/50 text-white text-base rounded-full w-8 h-8 flex items-center justify-center">
+                        ▶
+                      </span>
+                    </span>
+                  </div>
+                ) : (
+                  <NecklaceSVG
+                    size="sm"
+                    colours={{
+                      url: item.url,
+                      bg: item.bg ?? "",
+                      bead1: item.bead1 ?? "",
+                      bead2: item.bead2 ?? "",
+                      bead3: item.bead3 ?? "",
+                    }}
+                  />
+                )}
               </button>
             ))}
           </div>

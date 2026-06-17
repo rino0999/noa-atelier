@@ -13,6 +13,16 @@ export interface ProductImage {
   bead3: string;
 }
 
+export interface ProductMedia {
+  type: "image" | "video";
+  url?: string;
+  sources?: { url: string; mimeType: string }[];
+  bg?: string;
+  bead1?: string;
+  bead2?: string;
+  bead3?: string;
+}
+
 export type CollectionHandle = "all" | "new-arrivals" | "gift-sets" | "occasions";
 
 export interface Product {
@@ -27,6 +37,7 @@ export interface Product {
   collection: CollectionHandle;
   variants: ProductVariant[];
   images: ProductImage[];
+  media: ProductMedia[];
 }
 
 export interface CartLine {
@@ -86,6 +97,7 @@ export const products: Product[] = [
       { bg: palette.ivory, bead1: palette.ivory, bead2: "#F0EBE0", bead3: "#E8E0D0" },
       { bg: "#F0EBE5", bead1: palette.roseQuartz, bead2: palette.ivory, bead3: palette.blush },
     ],
+    media: [],
   },
   {
     id: "2",
@@ -110,6 +122,7 @@ export const products: Product[] = [
       { bg: "#F5EDD5", bead1: palette.goldMist, bead2: palette.warmGold, bead3: "#E8D5A0" },
       { bg: palette.ivory, bead1: palette.dustyRose, bead2: palette.goldMist, bead3: palette.blush },
     ],
+    media: [],
   },
   {
     id: "3",
@@ -134,6 +147,7 @@ export const products: Product[] = [
       { bg: palette.softCream, bead1: palette.ivory, bead2: "#F0EBE0", bead3: palette.warmGold },
       { bg: palette.ivory, bead1: palette.warmGold, bead2: palette.ivory, bead3: palette.goldMist },
     ],
+    media: [],
   },
   {
     id: "4",
@@ -160,6 +174,7 @@ export const products: Product[] = [
       { bg: "#F5ECEC", bead1: palette.dustyRose, bead2: palette.blush, bead3: "#C9A0A0" },
       { bg: palette.ivory, bead1: palette.roseQuartz, bead2: palette.blush, bead3: palette.dustyRose },
     ],
+    media: [],
   },
   {
     id: "5",
@@ -184,6 +199,7 @@ export const products: Product[] = [
       { bg: "#F5EDD5", bead1: palette.goldMist, bead2: palette.ivory, bead3: palette.warmGold },
       { bg: palette.softCream, bead1: palette.ivory, bead2: palette.goldMist, bead3: "#F0EBE0" },
     ],
+    media: [],
   },
   {
     id: "6",
@@ -208,6 +224,7 @@ export const products: Product[] = [
       { bg: "#F5EDD5", bead1: palette.warmGold, bead2: palette.roseQuartz, bead3: palette.goldMist },
       { bg: palette.ivory, bead1: palette.blush, bead2: palette.warmGold, bead3: palette.roseQuartz },
     ],
+    media: [],
   },
   {
     id: "7",
@@ -234,6 +251,7 @@ export const products: Product[] = [
       { bg: palette.ivory, bead1: "#F0EBE0", bead2: palette.dustyRose, bead3: palette.blush },
       { bg: palette.softCream, bead1: palette.dustyRose, bead2: palette.ivory, bead3: palette.blush },
     ],
+    media: [],
   },
   {
     id: "8",
@@ -258,6 +276,7 @@ export const products: Product[] = [
       { bg: palette.softCream, bead1: palette.roseQuartz, bead2: palette.warmGold, bead3: palette.blush },
       { bg: palette.ivory, bead1: palette.warmGold, bead2: palette.roseQuartz, bead3: palette.goldMist },
     ],
+    media: [],
   },
 ];
 

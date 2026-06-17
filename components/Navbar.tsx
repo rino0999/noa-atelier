@@ -7,9 +7,6 @@ import { useCart } from "@/context/CartContext";
 
 const shopLinks = [
   { label: "All Necklaces", href: "/collections/all" },
-  { label: "By Occasion", href: "/occasions" },
-  { label: "Gift Sets", href: "/collections/gift-sets" },
-  { label: "Gift Cards", href: "/gift-cards" },
 ];
 
 const navLinks = [

@@ -1,7 +1,7 @@
 // Shopify Storefront API — 2024-10
 // Requires: NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN, NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN
 
-import type { Product, Cart, CartLine, ProductImage, CollectionHandle } from "./mockData";
+import type { Product, Cart, CartLine, ProductImage, ProductMedia, CollectionHandle } from "./mockData";
 
 const domain = process.env.NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN!;
 const token = process.env.NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
@@ -51,6 +51,18 @@ interface ShopifyVariantNode {
   compareAtPrice: ShopifyMoney | null;
 }
 
+interface ShopifyMediaSource {
+  url: string;
+  mimeType: string;
+}
+
+interface ShopifyMediaNode {
+  mediaContentType: string;
+  previewImage: { url: string } | null;
+  image?: { url: string };
+  sources?: ShopifyMediaSource[];
+}
+
 interface ShopifyProductNode {
   id: string;
   handle: string;
@@ -61,6 +73,7 @@ interface ShopifyProductNode {
   priceRange: { minVariantPrice: ShopifyMoney };
   compareAtPriceRange: { minVariantPrice: ShopifyMoney };
   images: { edges: { node: ShopifyImage }[] };
+  media: { edges: { node: ShopifyMediaNode }[] };
   variants: { edges: { node: ShopifyVariantNode }[] };
 }
 
@@ -94,6 +107,16 @@ const PRODUCT_FRAGMENT = `
     priceRange { minVariantPrice { amount currencyCode } }
     compareAtPriceRange { minVariantPrice { amount currencyCode } }
     images(first: 5) { edges { node { url altText } } }
+    media(first: 10) {
+      edges {
+        node {
+          mediaContentType
+          previewImage { url }
+          ... on MediaImage { image { url } }
+          ... on Video { sources { url mimeType } }
+        }
+      }
+    }
     variants(first: 20) {
       edges {
         node {
@@ -182,6 +205,33 @@ function mapProduct(node: ShopifyProductNode): Product {
       ? node.images.edges.map(({ node: img }) => mapImage(img))
       : [FALLBACK_IMAGE];
 
+  const rawMedia: ProductMedia[] = node.media.edges.map(({ node: m }) => {
+    if (m.mediaContentType === "VIDEO") {
+      return {
+        type: "video" as const,
+        url: m.previewImage?.url,
+        sources: m.sources ?? [],
+        bg: FALLBACK_IMAGE.bg,
+        bead1: FALLBACK_IMAGE.bead1,
+        bead2: FALLBACK_IMAGE.bead2,
+        bead3: FALLBACK_IMAGE.bead3,
+      };
+    }
+    return {
+      type: "image" as const,
+      url: m.image?.url ?? m.previewImage?.url,
+      bg: "",
+      bead1: "",
+      bead2: "",
+      bead3: "",
+    };
+  });
+
+  const media: ProductMedia[] =
+    rawMedia.length > 0
+      ? rawMedia
+      : images.map((img) => ({ type: "image" as const, ...img }));
+
   return {
     id: node.id,
     handle: node.handle,
@@ -194,6 +244,7 @@ function mapProduct(node: ShopifyProductNode): Product {
     collection,
     variants,
     images,
+    media,
   };
 }
 
