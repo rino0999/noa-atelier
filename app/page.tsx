@@ -4,15 +4,6 @@ import NecklaceSVG from "@/components/NecklaceSVG";
 import ProductCard from "@/components/ProductCard";
 import { getFeaturedProducts } from "@/lib/shopify";
 
-const occasions = [
-  "Birthday",
-  "Anniversary",
-  "Bridesmaid",
-  "Self-Gift",
-  "Just Because",
-  "New Chapter",
-];
-
 const trustItems = [
   { icon: "✦", label: "Handcrafted in Sydney" },
   { icon: "◇", label: "Ethically Sourced" },
@@ -176,26 +167,6 @@ export default async function HomePage() {
           >
             Our Story
           </Link>
-        </div>
-      </section>
-
-      {/* ── Occasions Horizontal Scroll ──────────────── */}
-      <section className="bg-ivory py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="font-cormorant font-light text-3xl text-charcoal mb-8">
-            Shop by Occasion
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            {occasions.map((o) => (
-              <Link
-                key={o}
-                href="/occasions"
-                className="border border-charcoal/20 text-charcoal/70 rounded-full px-6 py-2.5 text-sm font-dm hover:border-warmGold hover:text-warmGold transition-colors"
-              >
-                {o}
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
