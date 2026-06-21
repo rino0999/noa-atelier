@@ -25,6 +25,18 @@ const socialColours = [
 export default async function HomePage() {
   const featured = await getFeaturedProducts();
 
+  // Collect up to 6 product images (2 per product) for the Instagram grid.
+  // Falls back to socialColours placeholders for any slots without a real URL.
+  const instagramGrid = [
+    ...featured.flatMap((p, pi) =>
+      p.images.slice(0, 2).map((img, ii) => ({
+        ...img,
+        alt: `${p.title} — photo ${ii + 1}`,
+      }))
+    ),
+    ...socialColours.map((c) => ({ ...c, url: undefined as string | undefined, alt: "Noa Atelier jewellery" })),
+  ].slice(0, 6);
+
   return (
     <div className="animate-fadeIn">
       {/* ── Hero ─────────────────────────────────────── */}
@@ -187,10 +199,28 @@ export default async function HomePage() {
           Tag us for a chance to be featured.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {socialColours.map((c, i) => (
-            <div key={i} className="rounded-2xl overflow-hidden aspect-square flex items-center justify-center">
-              <NecklaceSVG size="md" colours={c} className="w-full h-full" />
-            </div>
+          {instagramGrid.map((post, i) => (
+            <a
+              key={i}
+              href="https://www.instagram.com/noaat.elier"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl overflow-hidden aspect-square relative block group"
+            >
+              {post.url ? (
+                <Image
+                  src={post.url}
+                  alt={post.alt ?? "Noa Atelier"}
+                  fill
+                  sizes="(max-width: 640px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <NecklaceSVG size="md" colours={post} className="w-full h-full" />
+                </div>
+              )}
+            </a>
           ))}
         </div>
       </section>
