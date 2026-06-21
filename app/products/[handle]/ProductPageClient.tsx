@@ -210,7 +210,10 @@ export default function ProductPageClient({ product, relatedProducts }: Props) {
           </div>
 
           {/* Description */}
-          <p className="text-charcoal/70 leading-relaxed">{product.longDescription}</p>
+          <div
+            className="prose prose-sm max-w-none text-charcoal/70 prose-headings:text-charcoal prose-headings:font-cormorant prose-strong:text-charcoal prose-a:text-warmGold prose-ul:pl-4 prose-li:marker:text-warmGold"
+            dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+          />
 
           {/* Length selector */}
           {lengths.length > 0 && (

@@ -68,6 +68,7 @@ interface ShopifyProductNode {
   handle: string;
   title: string;
   description: string;
+  descriptionHtml: string;
   tags: string[];
   collections: { edges: { node: { handle: string } }[] };
   priceRange: { minVariantPrice: ShopifyMoney };
@@ -102,7 +103,7 @@ interface ShopifyCartNode {
 
 const PRODUCT_FRAGMENT = `
   fragment ProductFields on Product {
-    id handle title description tags
+    id handle title description descriptionHtml tags
     collections(first: 3) { edges { node { handle } } }
     priceRange { minVariantPrice { amount currencyCode } }
     compareAtPriceRange { minVariantPrice { amount currencyCode } }
@@ -240,6 +241,7 @@ function mapProduct(node: ShopifyProductNode): Product {
     compareAtPrice,
     shortDescription: node.description.slice(0, 140),
     longDescription: node.description,
+    descriptionHtml: node.descriptionHtml,
     tags: node.tags,
     collection,
     variants,

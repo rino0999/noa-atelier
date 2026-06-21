@@ -33,6 +33,7 @@ export interface Product {
   compareAtPrice: number;
   shortDescription: string;
   longDescription: string;
+  descriptionHtml: string;
   tags: string[];
   collection: CollectionHandle;
   variants: ProductVariant[];
@@ -82,6 +83,8 @@ export const products: Product[] = [
       "Soft rose quartz beads that catch the light like a morning whisper.",
     longDescription:
       "The Lumière Necklace was born from quiet mornings and golden hours. Each bead is hand-selected for its gentle blush tone, threaded with intention on a durable silk cord. Wear it close to your collarbone and let it become your daily reminder of softness and grace.",
+    descriptionHtml:
+      "<p>The Lumière Necklace was born from quiet mornings and golden hours. Each bead is hand-selected for its gentle blush tone, threaded with intention on a durable silk cord. Wear it close to your collarbone and let it become your daily reminder of softness and grace.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "new-arrivals",
     variants: [
@@ -109,6 +112,8 @@ export const products: Product[] = [
       "A fading sky captured in dusty rose and gold, worn close to the heart.",
     longDescription:
       "Inspired by the hour when day surrenders to dusk, this necklace layers warm dusty rose beads with a glimmer of gold mist. It is the piece you reach for when you want to feel effortlessly beautiful. Each bead is strung by hand in our Sydney studio, making every necklace subtly one-of-a-kind.",
+    descriptionHtml:
+      "<p>Inspired by the hour when day surrenders to dusk, this necklace layers warm dusty rose beads with a glimmer of gold mist. It is the piece you reach for when you want to feel effortlessly beautiful. Each bead is strung by hand in our Sydney studio, making every necklace subtly one-of-a-kind.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "new-arrivals",
     variants: [
@@ -134,6 +139,8 @@ export const products: Product[] = [
       "Gilded with warmth — a necklace that carries the sun wherever you go.",
     longDescription:
       "Soleil draws from the radiant energy of full sun and open skies. Rich warm gold beads sit alongside ivory pearl accents, creating a luminous contrast that elevates any look from effortless to extraordinary. Crafted to be worn every day and treasured for a lifetime.",
+    descriptionHtml:
+      "<p>Soleil draws from the radiant energy of full sun and open skies. Rich warm gold beads sit alongside ivory pearl accents, creating a luminous contrast that elevates any look from effortless to extraordinary. Crafted to be worn every day and treasured for a lifetime.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "new-arrivals",
     variants: [
@@ -159,6 +166,8 @@ export const products: Product[] = [
       "Like the first light at dawn — soft, fleeting, and impossibly lovely.",
     longDescription:
       "The Aurora Necklace is our most beloved everyday piece. With a gentle sweep of rose quartz and dusty rose beads, it layers beautifully or stands alone with quiet confidence. Every strand is finished with a delicate gold-filled clasp, a small but meaningful detail.",
+    descriptionHtml:
+      "<p>The Aurora Necklace is our most beloved everyday piece. With a gentle sweep of rose quartz and dusty rose beads, it layers beautifully or stands alone with quiet confidence. Every strand is finished with a delicate gold-filled clasp, a small but meaningful detail.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "new-arrivals",
     variants: [
@@ -186,6 +195,8 @@ export const products: Product[] = [
       "A celestial pairing of ivory and gold — timeless as the stars.",
     longDescription:
       "Celeste is the necklace for milestones. Ivory pearl beads float alongside gold mist accents, creating a sophisticated yet understated piece suited to every chapter of life. Gift it to someone you love, or treat yourself to the quiet luxury you deserve.",
+    descriptionHtml:
+      "<p>Celeste is the necklace for milestones. Ivory pearl beads float alongside gold mist accents, creating a sophisticated yet understated piece suited to every chapter of life. Gift it to someone you love, or treat yourself to the quiet luxury you deserve.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "gift-sets",
     variants: [
@@ -211,6 +222,8 @@ export const products: Product[] = [
       "For those who bloom in their own time — rose quartz kissed by warm gold.",
     longDescription:
       "Bloom celebrates the quiet courage of becoming. Rose quartz beads — known for their loving energy — are interspersed with warm gold accents that reflect your inner radiance. This piece is a reminder that you are always in season.",
+    descriptionHtml:
+      "<p>Bloom celebrates the quiet courage of becoming. Rose quartz beads — known for their loving energy — are interspersed with warm gold accents that reflect your inner radiance. This piece is a reminder that you are always in season.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "occasions",
     variants: [
@@ -236,6 +249,8 @@ export const products: Product[] = [
       "Dreamy layers of dusty rose and ivory pearl — for the romantics.",
     longDescription:
       "Reverie is for the daydreamers. Dusty rose and ivory pearl beads drift together in a quietly romantic arrangement, as though strung from a dream half-remembered. It is the piece that makes people stop and ask where you found it.",
+    descriptionHtml:
+      "<p>Reverie is for the daydreamers. Dusty rose and ivory pearl beads drift together in a quietly romantic arrangement, as though strung from a dream half-remembered. It is the piece that makes people stop and ask where you found it.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "gift-sets",
     variants: [
@@ -263,6 +278,8 @@ export const products: Product[] = [
       "Warm gold and rose quartz — the last glow before everything goes still.",
     longDescription:
       "The Ember Necklace holds the warmth of a fire just before it fades. Warm gold beads and rose quartz accents create a piece that feels intimate and alive, like something whispered rather than said aloud. Perfect for layering or wearing alone as a quiet statement.",
+    descriptionHtml:
+      "<p>The Ember Necklace holds the warmth of a fire just before it fades. Warm gold beads and rose quartz accents create a piece that feels intimate and alive, like something whispered rather than said aloud. Perfect for layering or wearing alone as a quiet statement.</p>",
     tags: ["necklace", "handcrafted", "beaded"],
     collection: "occasions",
     variants: [
