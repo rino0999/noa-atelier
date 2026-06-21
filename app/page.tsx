@@ -145,16 +145,32 @@ export default async function HomePage() {
       <section className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="flex gap-4 justify-center">
           {[
-            { bg: "#FAF7F2", bead1: "#D4A5A5", bead2: "#C9A96E", bead3: "#E8C8C8" },
-            { bg: "#F5EDD5", bead1: "#C9A96E", bead2: "#DFC28E", bead3: "#D4A5A5" },
-          ].map((c, i) => (
-            <NecklaceSVG
-              key={i}
-              size="md"
-              colours={c}
-              className={i === 1 ? "mt-10" : ""}
-            />
-          ))}
+            { product: featured[0], fallback: { bg: "#FAF7F2", bead1: "#D4A5A5", bead2: "#C9A96E", bead3: "#E8C8C8" } },
+            { product: featured[1], fallback: { bg: "#F5EDD5", bead1: "#C9A96E", bead2: "#DFC28E", bead3: "#D4A5A5" } },
+          ].map(({ product, fallback }, i) => {
+            const imgUrl = product?.images[0]?.url;
+            return imgUrl ? (
+              <div
+                key={i}
+                className={`relative w-44 h-64 sm:w-48 sm:h-72 rounded-2xl overflow-hidden flex-shrink-0${i === 1 ? " mt-10" : ""}`}
+              >
+                <Image
+                  src={imgUrl}
+                  alt={product!.title}
+                  fill
+                  sizes="(max-width: 640px) 176px, 192px"
+                  className="object-cover"
+                />
+              </div>
+            ) : (
+              <NecklaceSVG
+                key={i}
+                size="md"
+                colours={fallback}
+                className={i === 1 ? "mt-10" : ""}
+              />
+            );
+          })}
         </div>
         <div className="space-y-6">
           <h2 className="font-cormorant font-light text-4xl text-charcoal leading-snug">
