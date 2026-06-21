@@ -31,7 +31,7 @@ const accordionItems = [
   {
     title: "Details & Materials",
     content:
-      "Handcrafted using high-quality glass and stone beads, ethically sourced from our trusted suppliers. Finished with a 14kt gold-filled clasp. Strung on durable silk cord for lasting wear.",
+      "Handcrafted using high-quality glass and stone beads, ethically sourced from our trusted suppliers.",
   },
   {
     title: "Care Instructions",
