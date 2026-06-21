@@ -173,7 +173,15 @@ export default async function HomePage() {
       {/* ── Social Proof Grid ────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <h2 className="font-cormorant font-light text-3xl text-charcoal mb-3">
-          As seen on @noaatelier
+          As seen on{" "}
+          <a
+            href="https://www.instagram.com/noaat.elier"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-warmGold transition-colors"
+          >
+            @noaat.elier
+          </a>
         </h2>
         <p className="font-dm text-sm text-charcoal/50 mb-10">
           Tag us for a chance to be featured.
