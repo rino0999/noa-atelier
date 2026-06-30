@@ -326,6 +326,17 @@ export async function getFeaturedProducts(): Promise<Product[]> {
   return products.slice(0, 4);
 }
 
+export async function getProductsForSitemap(): Promise<
+  { handle: string; updatedAt: string }[]
+> {
+  const data = await shopifyFetch<{
+    products: { edges: { node: { handle: string; updatedAt: string } }[] };
+  }>(
+    `query { products(first: 250) { edges { node { handle updatedAt } } } }`
+  );
+  return data.products.edges.map(({ node }) => node);
+}
+
 // ── Cart mutations ───────────────────────────────────────────────
 
 export async function createCart(variantId: string, quantity: number): Promise<Cart> {
