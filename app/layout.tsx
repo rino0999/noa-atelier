@@ -14,16 +14,24 @@ import ComingSoon from "@/components/ComingSoon";
 // Then add className={`${cormorant.variable} ${dmSans.variable}`} to <html>
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://noaatelier.com.au"),
   title: {
-    default: "Noa Atelier — Handcrafted Beaded Necklaces",
+    default: "Noa Atelier | Handmade Beaded Necklaces & Jewellery Sydney",
     template: "%s | Noa Atelier",
   },
   description:
-    "Handcrafted beaded necklaces made with intention in Sydney, Australia. Thoughtfully designed, ethically sourced, worn with meaning.",
-  keywords: ["handcrafted necklaces", "beaded necklaces", "Sydney jewellery", "Noa Atelier"],
+    "Handmade beaded necklaces and jewellery, designed and hand-strung in Sydney. Shop unique, one-of-a-kind pieces from independent Australian label Noa Atelier.",
   openGraph: {
-    siteName: "Noa Atelier",
+    type: "website",
     locale: "en_AU",
+    siteName: "Noa Atelier",
+    url: "https://noaatelier.com.au",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  alternates: {
+    canonical: "/",
   },
 };
 

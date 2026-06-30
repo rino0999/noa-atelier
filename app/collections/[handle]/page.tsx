@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 
 const collectionMeta: Record<string, { title: string; description: string }> = {
   all: {
-    title: "All Necklaces",
+    title: "Shop Handmade Beaded Necklaces",
     description:
-      "Every piece in the Noa Atelier collection — handcrafted beaded necklaces made with intention in Sydney.",
+      "Browse handmade beaded necklaces by Noa Atelier — unique, hand-strung designs made in Sydney, Australia. New pieces added regularly. Afterpay available.",
   },
   "new-arrivals": {
     title: "New Arrivals",
@@ -35,7 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params;
   const meta = collectionMeta[handle];
   if (!meta) return {};
-  return { title: meta.title, description: meta.description };
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `/collections/${handle}` },
+  };
 }
 
 export default async function CollectionPage({ params }: Props) {

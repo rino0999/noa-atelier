@@ -44,7 +44,7 @@ export default async function HomePage() {
         <div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <h1 className="font-cormorant font-light text-5xl sm:text-6xl xl:text-7xl text-charcoal leading-tight">
-              Every bead<br />tells a story.
+              Handmade Beaded Necklaces,<br />Made in Sydney.
             </h1>
             <p className="font-dm text-charcoal/60 text-lg max-w-md leading-relaxed">
               Handcrafted beaded necklaces made with intention in Sydney, Australia.

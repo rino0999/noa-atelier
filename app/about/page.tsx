@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Our Story",
   description:
-    "Noa Atelier was born from a quiet act of creation. Learn about our story, our values, and the hands that make every necklace.",
+    "Meet Noa Atelier, an independent Sydney label creating handmade beaded necklaces. Discover our story, materials and the craft behind each piece.",
+  alternates: { canonical: "/about" },
 };
 
 const values = [

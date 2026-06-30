@@ -16,7 +16,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { handle } = await params;
   const product = await getProductByHandle(handle);
   if (!product) return {};
-  return { title: product.title, description: product.shortDescription };
+
+  const rawDesc = product.longDescription.trim();
+  const description =
+    rawDesc.length > 0
+      ? rawDesc.length > 155
+        ? rawDesc.slice(0, 152) + "..."
+        : rawDesc
+      : `${product.title} — a handmade beaded necklace, hand-strung in Sydney by Noa Atelier. Afterpay available.`;
+
+  const featuredImage = product.images[0]?.url;
+
+  return {
+    title: product.title,
+    description,
+    alternates: { canonical: `/products/${handle}` },
+    openGraph: featuredImage
+      ? { images: [{ url: featuredImage }] }
+      : undefined,
+  };
 }
 
 export default async function ProductPage({ params }: Props) {
