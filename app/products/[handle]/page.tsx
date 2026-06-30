@@ -11,8 +11,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  const products = await getAllProducts();
-  return products.map((p) => ({ handle: p.handle }));
+  try {
+    const products = await getAllProducts();
+    return products.map((p) => ({ handle: p.handle }));
+  } catch (err) {
+    // Don't let a Shopify outage fail the whole build — fall back to no
+    // prerendered params so products render on-demand at request time instead.
+    console.error("generateStaticParams: Shopify fetch failed, skipping prerender", err);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
