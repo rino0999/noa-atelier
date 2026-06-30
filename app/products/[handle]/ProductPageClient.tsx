@@ -141,6 +141,7 @@ export default function ProductPageClient({ product, relatedProducts }: Props) {
                   bead2: product.media[activeMedia]?.bead2 ?? "",
                   bead3: product.media[activeMedia]?.bead3 ?? "",
                 }}
+                alt={`Handmade beaded necklace — ${product.title} by Noa Atelier`}
               />
             )}
           </div>
@@ -178,6 +179,7 @@ export default function ProductPageClient({ product, relatedProducts }: Props) {
                       bead2: item.bead2 ?? "",
                       bead3: item.bead3 ?? "",
                     }}
+                    alt={`Handmade beaded necklace — ${product.title} by Noa Atelier, view ${i + 1}`}
                   />
                 )}
               </button>

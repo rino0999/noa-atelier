@@ -51,7 +51,11 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link href={`/products/${product.handle}`} className="block">
         {/* SVG illustration */}
         <div className="flex justify-center items-center py-8 px-4 bg-ivory/60">
-          <NecklaceSVG size="md" colours={product.images[0]} />
+          <NecklaceSVG
+            size="md"
+            colours={product.images[0]}
+            alt={`Handmade beaded necklace — ${product.title} by Noa Atelier`}
+          />
         </div>
 
         {/* Info */}

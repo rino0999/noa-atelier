@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface NecklaceColours {
   url?: string;
   bg: string;
@@ -10,6 +12,9 @@ interface NecklaceSVGProps {
   size?: "sm" | "md" | "lg";
   colours: NecklaceColours;
   className?: string;
+  // Descriptive alt text — used only when rendering a real product photo.
+  // The decorative SVG fallback stays aria-hidden, so alt is ignored there.
+  alt?: string;
 }
 
 const SIZES = {
@@ -45,15 +50,15 @@ export default function NecklaceSVG({
   size = "md",
   colours,
   className = "",
+  alt = "",
 }: NecklaceSVGProps) {
   const { width, height } = SIZES[size];
 
   if (colours.url) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
+      <Image
         src={colours.url}
-        alt=""
+        alt={alt}
         width={width}
         height={height}
         className={`object-cover rounded-xl ${className}`}
