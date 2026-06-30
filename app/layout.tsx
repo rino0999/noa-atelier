@@ -6,6 +6,28 @@ import Navbar from "@/components/Navbar";
 import CartSidebar from "@/components/CartSidebar";
 import Footer from "@/components/Footer";
 import ComingSoon from "@/components/ComingSoon";
+import JsonLd from "@/components/JsonLd";
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "OnlineStore",
+  name: "Noa Atelier",
+  url: "https://noaatelier.com.au",
+  logo: "https://noaatelier.com.au/logo-512.png",
+  description:
+    "Handmade beaded necklaces and jewellery, hand-strung in Sydney, Australia.",
+  sameAs: [
+    "https://www.instagram.com/noaat.elier",
+    "https://www.facebook.com/share/18pux7kXfy/",
+    "https://www.etsy.com/au/shop/NoaatelierAU",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Sydney",
+    addressRegion: "NSW",
+    addressCountry: "AU",
+  },
+};
 
 // TODO: When deploying to an environment with internet access, restore next/font/google:
 // import { Cormorant_Garamond, DM_Sans } from "next/font/google";
@@ -49,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="bg-softCream text-charcoal font-dm min-h-screen flex flex-col">
+        <JsonLd data={organizationSchema} />
         <CartProvider>
           <AnnouncementBar />
           <Navbar />

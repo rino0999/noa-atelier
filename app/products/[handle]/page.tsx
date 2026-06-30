@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { getProductByHandle, getAllProducts } from "@/lib/shopify";
 import ProductPageClient from "./ProductPageClient";
+import JsonLd from "@/components/JsonLd";
 import type { Metadata } from "next";
+
+const SITE_URL = "https://noaatelier.com.au";
 
 interface Props {
   params: Promise<{ handle: string }>;
@@ -45,5 +48,57 @@ export default async function ProductPage({ params }: Props) {
   ]);
   if (!product) notFound();
   const related = allProducts.filter((p) => p.id !== product.id).slice(0, 4);
-  return <ProductPageClient product={product} relatedProducts={related} />;
+
+  const productUrl = `${SITE_URL}/products/${handle}`;
+  const imageUrls = product.images
+    .map((img) => img.url)
+    .filter((url): url is string => Boolean(url));
+  const inStock = product.variants.some((v) => v.available);
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    ...(imageUrls.length > 0 ? { image: imageUrls } : {}),
+    description: product.longDescription,
+    brand: { "@type": "Brand", name: "Noa Atelier" },
+    offers: {
+      "@type": "Offer",
+      url: productUrl,
+      priceCurrency: "AUD",
+      price: product.price,
+      availability: inStock
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Shop",
+        item: `${SITE_URL}/collections/all`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.title,
+        item: productUrl,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
+      <ProductPageClient product={product} relatedProducts={related} />
+    </>
+  );
 }
