@@ -78,6 +78,33 @@ export default async function ProductPage({ params }: Props) {
         ? "https://schema.org/InStock"
         : "https://schema.org/OutOfStock",
       itemCondition: "https://schema.org/NewCondition",
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "8.00",
+          currency: "AUD",
+        },
+        shippingDestination: {
+          "@type": "DefinedRegion",
+          addressCountry: "AU",
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        merchantReturnLink: `${SITE_URL}/policies/refund-policy`,
+        applicableCountry: "AU",
+        returnPolicyCategory:
+          "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 14,
+        returnMethod: "https://schema.org/ReturnByMail",
+        returnFees: "https://schema.org/ReturnShippingFees",
+        returnShippingFeesAmount: {
+          "@type": "MonetaryAmount",
+          value: "8.00",
+          currency: "AUD",
+        },
+      },
     },
   };
 

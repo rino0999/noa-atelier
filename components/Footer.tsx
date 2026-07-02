@@ -76,6 +76,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               {[
                 { label: "Shipping & Returns", href: "/shipping" },
+                { label: "Refund Policy", href: "/policies/refund-policy" },
                 { label: "FAQs", href: "/contact" },
                 { label: "Contact Us", href: "/contact" },
                 { label: "Care Guide", href: "/care-guide" },

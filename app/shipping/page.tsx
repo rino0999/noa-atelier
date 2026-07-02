@@ -9,8 +9,8 @@ const shippingRates = [
   {
     method: "Standard (AUS)",
     time: "3–7 business days",
-    cost: "AUD $8.95",
-    note: "Free on orders over $100",
+    cost: "AUD $8.00",
+    note: "Flat rate",
   },
   {
     method: "Express (AUS)",
@@ -75,11 +75,10 @@ export default function ShippingPage() {
         </p>
         <ul className="space-y-3 text-charcoal/70 text-sm leading-relaxed">
           {[
-            "Returns accepted within 30 days of delivery for unused items in original packaging.",
-            "To initiate a return, email us at hello@noaatelier.com.au with your order number.",
-            "We cover return shipping on faulty or incorrect items.",
-            "Personalised or custom items cannot be returned unless faulty.",
-            "Refunds are processed within 5–7 business days of receiving the return.",
+            "Change-of-mind returns are accepted within 14 days of delivery for unworn items in their original condition and packaging.",
+            "Return postage is the customer's responsibility — we recommend a tracked service.",
+            "Faulty, damaged, or incorrect items? Contact us within 7 days of delivery with a photo and we'll make it right, including return postage.",
+            "To start a return, email us at noaatelier79@gmail.com with your order number.",
           ].map((item) => (
             <li key={item} className="flex gap-2">
               <span className="text-warmGold flex-shrink-0">✦</span>
@@ -87,6 +86,16 @@ export default function ShippingPage() {
             </li>
           ))}
         </ul>
+        <p className="text-charcoal/60 text-sm leading-relaxed">
+          Read our full{" "}
+          <a
+            href="/policies/refund-policy"
+            className="text-warmGold hover:underline"
+          >
+            Returns &amp; Refunds policy
+          </a>
+          .
+        </p>
       </section>
 
       <div className="mt-12 bg-ivory rounded-2xl p-8 text-center">

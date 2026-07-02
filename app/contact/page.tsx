@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "Can I order a custom length?",
-    a: "We currently offer three standard lengths: 40cm, 45cm, and 50cm. If you need something different, email us at hello@noaatelier.com.au and we'll do our best to help.",
+    a: "We currently offer three standard lengths: 40cm, 45cm, and 50cm. If you need something different, email us at noaatelier79@gmail.com and we'll do our best to help.",
   },
 ];
 
