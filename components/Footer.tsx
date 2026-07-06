@@ -37,6 +37,11 @@ export default function Footer() {
                   <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
                 </svg>
               </a>
+              <a href="https://www.facebook.com/share/18k5Pk7M3b/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-warmGold transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z" />
+                </svg>
+              </a>
               <a href="https://pinterest.com" aria-label="Pinterest" className="hover:text-warmGold transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.86 6.39 9.29-.09-.78-.17-1.98.04-2.83.18-.77 1.22-5.16 1.22-5.16s-.31-.62-.31-1.55c0-1.46.84-2.55 1.89-2.55.89 0 1.33.67 1.33 1.47 0 .9-.57 2.24-.87 3.48-.25 1.04.52 1.88 1.54 1.88 1.85 0 3.09-2.38 3.09-5.2 0-2.15-1.44-3.76-4.05-3.76-2.95 0-4.78 2.2-4.78 4.65 0 .84.24 1.44.62 1.9.17.2.19.28.13.51-.04.17-.14.57-.18.73-.06.23-.24.32-.44.23-1.23-.5-1.81-1.85-1.81-3.37 0-2.51 2.12-5.53 6.32-5.53 3.39 0 5.62 2.45 5.62 5.09 0 3.49-1.94 6.1-4.79 6.1-.96 0-1.86-.52-2.17-1.1l-.62 2.37c-.22.85-.82 1.92-1.23 2.56.93.28 1.91.43 2.94.43 5.52 0 10-4.48 10-10S17.52 2 12 2z" />
